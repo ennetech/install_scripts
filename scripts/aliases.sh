@@ -79,14 +79,14 @@ XXX
 version: '3'
 
 services:
-  traefik:
+  echo:
     image: mendhak/http-https-echo
     networks:
       - web
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
-      - "traefik.frontend.rule=Host:echo.*"
+      - "traefik.frontend.rule=HostRegexp:echo.{domain:.+}"
       - "traefik.port=80"
 networks:
   web:

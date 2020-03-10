@@ -10,6 +10,14 @@ myip () {
   curl ifconfig.me
   echo ""
 }
+
+proj () {
+  case $1 in
+  *)
+    echo "$1 is not a valid proj"
+  ;;
+  esac
+}
 EOF
 
 echo "RUN 'exec bash' to activate the aliases in current session"

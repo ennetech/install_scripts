@@ -10,4 +10,4 @@ myip () {
 }
 EOF
 
-echo "RUN 'exec bash' to activate the aliases in current session
+echo "RUN 'exec bash' to activate the aliases in current session"

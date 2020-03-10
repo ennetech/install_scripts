@@ -11,6 +11,10 @@ myip () {
   echo ""
 }
 
+ff () {
+  find . -type f -name "*$1*" | grep "$1"
+}
+
 proj () {
   case $1 in
   traefik)

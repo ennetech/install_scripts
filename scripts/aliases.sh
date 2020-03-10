@@ -9,4 +9,4 @@ myip () {
 }
 EOF
 
-. ~/.bash_aliases
+exec bash

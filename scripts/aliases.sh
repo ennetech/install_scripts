@@ -1,4 +1,4 @@
-cat <<EOF > ~/.bash_aliases
+cat <<'EOF' > ~/.bash_aliases
 alias ll='ls -al'
 alias xtargz='tar -zxvf'
 alias ctargz='tar -zcvf'
@@ -13,6 +13,10 @@ myip () {
 
 proj () {
   case $1 in
+  traefik)
+    CDIR=`pwd`
+    mkdir CDIR\_proxy
+  ;;
   *)
     echo "$1 is not a valid proj"
   ;;

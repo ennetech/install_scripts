@@ -14,15 +14,62 @@ myip () {
 proj () {
   case $1 in
   traefik)
+    docker network create web
     CDIR=`pwd`
     mkdir $CDIR/_proxy
     touch $CDIR/_proxy/acme.json
     chmod 600 $CDIR/_proxy/acme.json
     cat <<XXX > $CDIR/_proxy/docker-compose.yml
-    dc
+version: '3'
+
+services:
+  traefik:
+    image: traefik:1.6.4
+    command: --api
+    networks:
+      - web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
+networks:
+  web:
+    external: true
 XXX
+    read -p 'Email?: ' EMAIL
     cat <<XXX > $CDIR/_proxy/traefik.toml
-    toml
+debug = false
+
+logLevel = "ERROR"
+defaultEntryPoints = ["https","http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+[retry]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+watch = true
+exposedByDefault = false
+
+[acme]
+email = "$EMAIL"
+storage = "acme.json"
+entryPoint = "https"
+onHostRule = true
+[acme.httpChallenge]
+entryPoint = "http"
+
 XXX
   ;;
   *)

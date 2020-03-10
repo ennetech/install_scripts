@@ -72,6 +72,27 @@ entryPoint = "http"
 
 XXX
   ;;
+  service-echo)
+    CDIR=`pwd`
+    mkdir $CDIR/echo
+    cat <<XXX > $CDIR/_proxy/docker-compose.yml
+version: '3'
+
+services:
+  traefik:
+    image: mendhak/http-https-echo
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.frontend.rule=Host:echo.*"
+      - "traefik.port=80"
+networks:
+  web:
+    external: true
+XXX
+  ;;
   *)
     echo "$1 is not a valid proj"
   ;;

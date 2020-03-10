@@ -75,7 +75,7 @@ XXX
   service-echo)
     CDIR=`pwd`
     mkdir $CDIR/echo
-    cat <<XXX > $CDIR/_proxy/docker-compose.yml
+    cat <<XXX > $CDIR/echo/docker-compose.yml
 version: '3'
 
 services:

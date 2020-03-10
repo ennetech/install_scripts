@@ -83,13 +83,12 @@ services:
     image: mendhak/http-https-echo
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=web"
       - "traefik.frontend.rule=HostRegexp:echo.{domain:.+}"
-      - "traefik.port=80"
 networks:
   default:
     external:
       name: web
+
 XXX
   ;;
   *)

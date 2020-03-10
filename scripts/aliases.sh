@@ -8,3 +8,5 @@ myip () {
   echo "your ip is"
 }
 EOF
+
+. ~/.bash_aliases

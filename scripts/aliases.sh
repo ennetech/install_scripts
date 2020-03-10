@@ -15,7 +15,15 @@ proj () {
   case $1 in
   traefik)
     CDIR=`pwd`
-    mkdir CDIR\_proxy
+    mkdir $CDIR\_proxy
+    touch $CDIR\_proxy\acme.json
+    chmod 600 $CDIR\_proxy\acme.json
+    cat <<XXX > $CDIR\_proxy\docker-compose.yml
+    dc
+XXX
+    cat <<XXX > $CDIR\_proxy\traefik.toml
+    toml
+XXX
   ;;
   *)
     echo "$1 is not a valid proj"

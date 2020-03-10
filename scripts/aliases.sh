@@ -4,6 +4,8 @@ alias xtargz='tar -zxvf'
 alias ctargz='tar -zcvf'
 alias dirsize='du -h --max-depth=1 | sort -hr'
 
+alias dc='docker-compose'
+
 myip () {
   curl ifconfig.me
   echo ""

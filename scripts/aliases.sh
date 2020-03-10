@@ -15,13 +15,13 @@ proj () {
   case $1 in
   traefik)
     CDIR=`pwd`
-    mkdir $CDIR\_proxy
-    touch $CDIR\_proxy\acme.json
-    chmod 600 $CDIR\_proxy\acme.json
-    cat <<XXX > $CDIR\_proxy\docker-compose.yml
+    mkdir $CDIR/_proxy
+    touch $CDIR/_proxy/acme.json
+    chmod 600 $CDIR/_proxy/acme.json
+    cat <<XXX > $CDIR/_proxy/docker-compose.yml
     dc
 XXX
-    cat <<XXX > $CDIR\_proxy\traefik.toml
+    cat <<XXX > $CDIR/_proxy/traefik.toml
     toml
 XXX
   ;;

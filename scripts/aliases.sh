@@ -5,7 +5,8 @@ alias ctargz='tar -zcvf'
 alias dirsize='du -h --max-depth=1 | sort -hr'
 
 myip () {
-  echo "your ip is"
+  curl ifconfig.me
+  echo ""
 }
 EOF
 

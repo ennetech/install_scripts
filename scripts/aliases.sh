@@ -3,7 +3,7 @@ alias ll='ls -al'
 alias xtargz='tar -zxvf'
 alias ctargz='tar -zcvf'
 alias dirsize='du -h --max-depth=1 | sort -hr'
-alias dubuntu='docker run --rm -ti -v $(pwd):/data ubuntu'
+alias d='docker run --rm -ti -v $(pwd):/data'
 
 alias dc='docker-compose'
 
